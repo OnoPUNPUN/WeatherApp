@@ -9,8 +9,7 @@ A simple and clean weather app built using **Flutter**. It fetches real-time wea
 - 🌍 Location-based weather fetching
 - 🌡️ Real-time temperature display
 - 🕒 Current time shown with formatted output
-- ✨ Smooth animations (optional)
-- 📱 Responsive UI ready for Android devices
+- ✨ Smooth animations
 
 ---
 
