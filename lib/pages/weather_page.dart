@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:lottie/lottie.dart';
 import 'package:weather_app/models/weather_model.dart';
 import 'package:weather_app/services/weather_service.dart';
@@ -13,6 +16,8 @@ class WeatherPage extends StatefulWidget {
 class _WeatherPageState extends State<WeatherPage> {
   final _weatherService = WeatherService('908ea18cce3b1b0a8b21ad23afd5cd14');
   Weather? _weather;
+  late Timer _timer;
+  DateTime _currentTime = DateTime.now();
 
   _fetchWeather() async {
     String cityName = await _weatherService.getCurrentCity();
@@ -33,6 +38,18 @@ class _WeatherPageState extends State<WeatherPage> {
     super.initState();
 
     _fetchWeather();
+
+    _timer = Timer.periodic(Duration(minutes: 1), (timer) {
+      setState(() {
+        _currentTime = DateTime.now();
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    _timer.cancel();
+    super.dispose();
   }
 
   // @override
@@ -54,6 +71,7 @@ class _WeatherPageState extends State<WeatherPage> {
 
     switch (mainCondition.toLowerCase()) {
       case 'clouds':
+        return 'assets/HaveyCould.json';
       case 'mist':
       case 'smoke':
       case 'haze':
@@ -95,6 +113,10 @@ class _WeatherPageState extends State<WeatherPage> {
 
               //weather conditions
               Text(_weather?.mainCondition ?? ""),
+              Text(
+                DateFormat('hh:mm a').format(_currentTime),
+                style: TextStyle(fontSize: 18),
+              ),
             ],
           ],
         ),
