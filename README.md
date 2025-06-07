@@ -4,7 +4,7 @@ Welcome to the **Version 02** of my Flutter Weather App!
 This version introduces a **modern and aesthetic UI** for better readability and user experience 🌈✨
 
 ## 🖼️ Preview
-![App Screenshot](lib/assets/screenshots/weather_app_v02.png)
+<img src="lib/assets/screenshots/weather_app_v02.png" alt="App Screenshot" width="300">
 > Temperature is shown in **Kelvin**, along with weather status, hourly forecast, and additional information like humidity, wind speed, and pressure.
 
 ---
